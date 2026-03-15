@@ -2,7 +2,7 @@
 	"name": "better-comment-highlight",
 	"displayName": "Better Comment Highlight",
 	"description": "Highlights specific tags in comments (ERROR, WARN, NOTE, IDEA, etc.) with customizable colors for better code readability.",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"publisher": "j2cks",
 	"icon": "pic/icon.png",
 	"repository": {
@@ -33,9 +33,55 @@
 		"configuration": {
 			"title": "Better Comment Highlight",
 			"properties": {
+				"betterCommentTags.groups": {
+					"type": "array",
+					"default": [],
+					"description": "Custom tag groups added to the default groups. If a custom group has the same name as a default group, it overrides it.",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string",
+								"description": "Unique group name."
+							},
+							"tags": {
+								"type": "array",
+								"description": "Tags matched for this group (case-insensitive).",
+								"items": {
+									"type": "string"
+								}
+							},
+							"color": {
+								"type": "string",
+								"description": "Text color for this group."
+							},
+							"backgroundColor": {
+								"type": "string",
+								"description": "Background color for this group. Leave empty for no background."
+							},
+							"fontWeight": {
+								"type": "string",
+								"enum": [
+									"normal",
+									"bold",
+									"100",
+									"200",
+									"300",
+									"400",
+									"500",
+									"600",
+									"700",
+									"800",
+									"900"
+								],
+								"description": "Font weight for this group."
+							}
+						}
+					}
+				},
 				"betterCommentTags.critical.color": {
 					"type": "string",
-					"default": "#D92626",
+					"default": "#FF2A3D",
 					"description": "Text color for critical tags (ERROR, ERR, FIX, FIXME)."
 				},
 				"betterCommentTags.critical.backgroundColor": {
@@ -63,7 +109,7 @@
 				},
 				"betterCommentTags.warning.color": {
 					"type": "string",
-					"default": "#D99D26",
+					"default": "#FFAA33",
 					"description": "Text color for warning tags (WARNING, WARN)."
 				},
 				"betterCommentTags.warning.backgroundColor": {
@@ -91,7 +137,7 @@
 				},
 				"betterCommentTags.ideas.color": {
 					"type": "string",
-					"default": "#306DE8",
+					"default": "#1AA9F5",
 					"description": "Text color for idea tags (TODO, IDEA, OPTIMIZE)."
 				},
 				"betterCommentTags.ideas.backgroundColor": {
@@ -119,7 +165,7 @@
 				},
 				"betterCommentTags.info.color": {
 					"type": "string",
-					"default": "#309BE8",
+					"default": "#6FEA2D",
 					"description": "Text color for info tags (NOTE, INFO)."
 				},
 				"betterCommentTags.info.backgroundColor": {
